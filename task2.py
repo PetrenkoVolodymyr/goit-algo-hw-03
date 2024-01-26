@@ -1,15 +1,15 @@
 import random
 
-def get_numbers_ticket(min, max, quantity):
-    if type(min) == int and type(max) == int and type(quantity) == int and min>0 and max<=1000 and quantity<=max-min+1:
-        list=[]
-        while len(list) < quantity:
-            num = random.randint(min, max)
-            if num in list:
+def get_numbers_ticket(start, end, quantity):
+    if type(start) == int and type(end) == int and type(quantity) == int and start>0 and end<=1000 and quantity<=end-start+1:
+        chosen=[]
+        while len(chosen) < quantity:
+            num = random.randint(start, end)
+            if num in chosen:
                 continue
             else:
-                list.append(num)
-        return(sorted(list))
+                chosen.append(num)
+        return(sorted(chosen))
     else:
         return('Введено некоректні дані')
 

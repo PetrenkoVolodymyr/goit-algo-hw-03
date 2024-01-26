@@ -1,10 +1,10 @@
-import datetime as dt
-from datetime import datetime as dtdt
+import datetime
+from datetime import datetime
 
 def get_days_from_today(date):
-    today = dtdt.today()
+    today = datetime.today()
     try:
-        date_transformed = dtdt.strptime(date, '%Y-%m-%d')
+        date_transformed = datetime.strptime(date, '%Y-%m-%d')
     except ValueError:
         return("Введено некоректну дату")
     else:

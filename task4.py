@@ -4,21 +4,22 @@ from datetime import datetime, timedelta
 def get_upcoming_birthdays(users):
     upcoming_birthdays=[]
     for user in users:
-        birthday_date_str = user["birthday"].replace(user["birthday"][:4], '2024', 1)
-        birthday_date_date = datetime.strptime(birthday_date_str, "%Y.%m.%d").date()
 
+        birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
         today = datetime.today().date()
-        diff_days = birthday_date_date-today
+        curr_birthday = datetime(today.year, birthday.month, birthday.day).date()
 
-        if diff_days <= timedelta(days=6) and diff_days>= timedelta(days=0):
-            if birthday_date_date.weekday() == 5:
-                birthday_date_date = birthday_date_date + timedelta(days=2)
-            if birthday_date_date.weekday() == 6:
-                birthday_date_date = birthday_date_date + timedelta(days=1)
+        diff = curr_birthday - today
 
-            birthday_date_str = birthday_date_date.strftime("%Y-%m-%d")
+        if diff <= timedelta(days=6) and diff>= timedelta(days=0):
+            if curr_birthday.weekday() == 5:
+                cong_date = curr_birthday + timedelta(days=2)
+            if curr_birthday.weekday() == 6:
+                cong_date = curr_birthday + timedelta(days=1)
 
-            to_congratulate = {"name": user["name"], "congratulation_date": birthday_date_str}
+            cong_date_str = cong_date.strftime("%Y-%m-%d")
+
+            to_congratulate = {"name": user["name"], "congratulation_date": cong_date_str}
             upcoming_birthdays.append(to_congratulate.copy())
 
     return(upcoming_birthdays)
@@ -27,7 +28,7 @@ users = [
     {"name": "John Doe", "birthday": "1985.01.25"}, 
     {"name": "John Doe", "birthday": "1985.01.27"},
     {"name": "John QQQ", "birthday": "1985.02.27"},
-    {"name": "John TTT", "birthday": "1985.01.02"}
+    {"name": "John TTT", "birthday": "1985.02.01"}
 ]
 
 upcoming_birthdays = get_upcoming_birthdays(users)
