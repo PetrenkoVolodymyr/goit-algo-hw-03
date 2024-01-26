@@ -13,22 +13,22 @@ def get_upcoming_birthdays(users):
 
         if diff <= timedelta(days=6) and diff>= timedelta(days=0):
             if curr_birthday.weekday() == 5:
-                cong_date = curr_birthday + timedelta(days=2)
+                curr_birthday = curr_birthday + timedelta(days=2)
             if curr_birthday.weekday() == 6:
-                cong_date = curr_birthday + timedelta(days=1)
+                curr_birthday = curr_birthday + timedelta(days=1)
 
-            cong_date_str = cong_date.strftime("%Y-%m-%d")
+            cong_date_str = curr_birthday.strftime("%Y-%m-%d")
 
             to_congratulate = {"name": user["name"], "congratulation_date": cong_date_str}
             upcoming_birthdays.append(to_congratulate.copy())
 
-    return(upcoming_birthdays)
+    return('ss', upcoming_birthdays)
 
 users = [
-    {"name": "John Doe", "birthday": "1985.01.25"}, 
-    {"name": "John Doe", "birthday": "1985.01.27"},
-    {"name": "John QQQ", "birthday": "1985.02.27"},
-    {"name": "John TTT", "birthday": "1985.02.01"}
+    {"name": "John Doe", "birthday": "1985.05.25"}, 
+    {"name": "John Doe", "birthday": "1985.01.28"},
+    {"name": "John QQQ", "birthday": "1985.01.30"},
+    {"name": "John TTT", "birthday": "1985.05.01"}
 ]
 
 upcoming_birthdays = get_upcoming_birthdays(users)

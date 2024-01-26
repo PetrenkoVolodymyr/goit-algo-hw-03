@@ -11,6 +11,6 @@ def get_numbers_ticket(start, end, quantity):
                 chosen.append(num)
         return(sorted(chosen))
     else:
-        return('Введено некоректні дані')
+        return([])
 
-print(get_numbers_ticket(1,49,6))
+print(get_numbers_ticket(1,36,6))

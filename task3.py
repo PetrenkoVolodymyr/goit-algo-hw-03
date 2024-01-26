@@ -11,7 +11,7 @@ def normalize_phone(phone_number):
     phone = ""    
     for x in phone_list: 
         phone += x  
-    return("Нормалізований номер телефону для SMS-розсилки:", phone)
+    return(phone)
 
 raw_numbers = "380tg 44@ 1а23* 4./567"
 
